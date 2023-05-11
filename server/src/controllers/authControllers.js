@@ -31,9 +31,9 @@ const login_user = async (req, res) => {
         if (user) {
             const auth = bcrypt.compare(password, user.password);
             if (auth) {
-                // const token = createToken(user._id);
-                // console.log('token', token);
-                // res.cookie("jwt", token);
+                const token = createToken(user._id);
+                console.log('token', token);
+                res.cookie("jwt", token);
                 res.send(user);
             }
             else {
@@ -46,4 +46,9 @@ const login_user = async (req, res) => {
     }
 }
 
-export { signup_user, login_user };
+const logout_user = (req,res) => {
+    res.clearCookie("jwt");
+    res.send("User logged out successfully.");
+}
+
+export { signup_user, login_user, logout_user };
