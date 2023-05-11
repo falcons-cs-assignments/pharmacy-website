@@ -31,8 +31,9 @@ const update_one_user = async (req, res) => {
         res.status(401).send('Unauthorized');
         return;
     }
-    // Check if the authenticated user is the same as the user being updated
-    if (req.params.id !== req.user.id) {
+    // Check if the authenticated user is the admin or the user being updated
+    if (req.user.role !== 'Admin' && req.params.id !== req.user.id) {
+        console.log(req.user);
         res.status(403).send('Forbidden');
         return;
     }
@@ -59,27 +60,31 @@ const update_one_user = async (req, res) => {
 
 const delete_one_user = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-      res.status(404).send('Invalid ObjectID!');
-      return;
+        res.status(404).send('Invalid ObjectID!');
+        return;
     }
   
     try {
-      const userToDelete = await User.findOne({ _id: new ObjectId(req.params.id) });
-      if (!userToDelete) {
-        res.status(404).send('User with the given ID is not found!');
-        return;
-      }
-  
-      // Check if the authenticated user is the admin or the user being deleted
-      if (req.user.role === 'Admin' || req.params.id === req.user.id) {
-        await User.deleteOne({ _id: new ObjectId(req.params.id) });
-        res.status(200).send('Deleted successfully');
-      } else {
-        console.log(req.user)
-        res.status(403).send('Forbidden');
-      }
+        const userToDelete = await User.findOne({ _id: new ObjectId(req.params.id) });
+        if (!userToDelete) {
+                res.status(404).send('User with the given ID is not found!');
+                return;
+        }
+        // Ensure that the user making the request is authenticated
+        if (!req.user) {
+                res.status(401).send('Unauthorized');
+                return;
+        }
+        // Check if the authenticated user is the admin or the user being deleted
+        if (req.user.role === 'Admin' || req.params.id === req.user.id) {
+                await User.deleteOne({ _id: new ObjectId(req.params.id) });
+                res.status(200).send('Deleted successfully');
+        } else {
+                console.log(req.user)
+                res.status(403).send('Forbidden');
+        }
     } catch (err) {
-      res.status(500).send(err);
+        res.status(500).send(err);
     }
 };
   
