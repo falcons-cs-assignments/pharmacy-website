@@ -26,6 +26,16 @@ const update_one_user = async (req, res) => {
         res.status(404).send('Invalid ObjectID!');
         return;
     };
+    // Ensure that the user making the request is authenticated
+    if (!req.user) {
+        res.status(401).send('Unauthorized');
+        return;
+    }
+    // Check if the authenticated user is the same as the user being updated
+    if (req.params.id !== req.user.id) {
+        res.status(403).send('Forbidden');
+        return;
+    }
     const user = await User.findOne({_id: new ObjectId(req.params.id)});
     if (!user) {
         res.status(404).send('user with given ID is not found!');

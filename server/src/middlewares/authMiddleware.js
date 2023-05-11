@@ -5,16 +5,15 @@ export const authToken = (req, res, next) => {
     if (token) {
         jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decodedToken) => {
             if (err) {
-                console.log('err', err);
-            }
-            else {
+                return res.status(401).json({ status :'Authentication failed', error: err });
+            } else {
                 console.log("decodedToken", decodedToken);
+                req.user = decodedToken;
                 next();
             }
-        })
-    }
-    else {
+        });
+    } else {
         console.log("Token not found!");
-        res.send("You are not authenicated!");
+        res.status(401).send("You are not authenticated!");
     }
-}
+};
