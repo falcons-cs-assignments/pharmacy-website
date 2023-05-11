@@ -3,6 +3,17 @@ import { ObjectId } from "mongodb";
 
 
 const get_all_users = async (req, res) => {
+    // Ensure that the user making the request is authenticated
+    if (!req.user) {
+        res.status(401).send('Unauthorized');
+        return;
+    }
+    // Check if the authenticated user is the admin
+    if (req.user.role !== 'Admin') {
+        console.log(req.user);
+        res.status(403).send('Forbidden');
+        return;
+    }
     const users = await User.find();
     res.send(users);
 }
