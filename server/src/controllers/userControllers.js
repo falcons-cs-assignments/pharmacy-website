@@ -59,25 +59,29 @@ const update_one_user = async (req, res) => {
 
 const delete_one_user = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(404).send('Invalid ObjectID!');
+      res.status(404).send('Invalid ObjectID!');
+      return;
+    }
+  
+    try {
+      const userToDelete = await User.findOne({ _id: new ObjectId(req.params.id) });
+      if (!userToDelete) {
+        res.status(404).send('User with the given ID is not found!');
         return;
-    };
-    const user = await User.findOne({_id: new ObjectId(req.params.id)});
-    if (!user) {
-        res.status(404).send('user with given ID is not found!');
+      }
+  
+      // Check if the authenticated user is the admin or the user being deleted
+      if (req.user.role === 'Admin' || req.params.id === req.user.id) {
+        await User.deleteOne({ _id: new ObjectId(req.params.id) });
+        res.status(200).send('Deleted successfully');
+      } else {
+        console.log(req.user)
+        res.status(403).send('Forbidden');
+      }
+    } catch (err) {
+      res.status(500).send(err);
     }
-    else {
-        try {
-            await User
-                    .deleteOne({_id: new ObjectId(req.params.id)})
-                    .then('deleted successfully')
-                    .catch((err) => console.log(err));
-            res.send(user);
-        }
-        catch(err) {
-            console.log('error', err);
-        }
-    }
-}
+};
+  
 
 export { get_all_users, get_one_user, update_one_user, delete_one_user };
