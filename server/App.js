@@ -12,10 +12,9 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(userRoutes);
 app.use(authRoutes);
-// app.use(cookieParser());
-// app.use(authToken, userRoutes);
+app.use(cookieParser());
+app.use(authToken, userRoutes);
 
 mongoose
   .connect(process.env.DB_URL)

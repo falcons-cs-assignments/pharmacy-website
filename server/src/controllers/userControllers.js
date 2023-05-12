@@ -3,6 +3,17 @@ import { ObjectId } from "mongodb";
 
 
 const get_all_users = async (req, res) => {
+    // Ensure that the user making the request is authenticated
+    if (!req.user) {
+        res.status(401).send('Unauthorized');
+        return;
+    }
+    // Check if the authenticated user is the admin
+    if (req.user.role !== 'Admin') {
+        console.log(req.user);
+        res.status(403).send('Forbidden');
+        return;
+    }
     const users = await User.find();
     res.send(users);
 }
@@ -12,6 +23,18 @@ const get_one_user = async (req, res) => {
         res.status(404).send('Invalid ObjectID!');
         return;
     };
+    // Ensure that the user making the request is authenticated
+    if (!req.user) {
+        res.status(401).send('Unauthorized');
+        return;
+    }
+    // Check if the authenticated user is the admin or the user being fetched
+    const isEqual = req.user._id.equals(req.params.id); // compare 2 ObjectIds
+    if (req.user.role !== 'Admin' && !isEqual) {
+        console.log(req.user);
+        res.status(403).send('Forbidden');
+        return;
+    }
     const user = await User.findOne({_id: new ObjectId(req.params.id)});
     if (!user) {
         res.status(404).send('user with given ID is not found!');
@@ -26,6 +49,18 @@ const update_one_user = async (req, res) => {
         res.status(404).send('Invalid ObjectID!');
         return;
     };
+    // Ensure that the user making the request is authenticated
+    if (!req.user) {
+        res.status(401).send('Unauthorized');
+        return;
+    }
+    // Check if the authenticated user is the admin or the user being updated
+    const isEqual = req.user._id.equals(req.params.id); // compare 2 ObjectIds
+    if (req.user.role !== 'Admin' && !isEqual) {
+        console.log(req.user);
+        res.status(403).send('Forbidden');
+        return;
+    }
     const user = await User.findOne({_id: new ObjectId(req.params.id)});
     if (!user) {
         res.status(404).send('user with given ID is not found!');
@@ -51,23 +86,32 @@ const delete_one_user = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
         res.status(404).send('Invalid ObjectID!');
         return;
-    };
-    const user = await User.findOne({_id: new ObjectId(req.params.id)});
-    if (!user) {
-        res.status(404).send('user with given ID is not found!');
     }
-    else {
-        try {
-            await User
-                    .deleteOne({_id: new ObjectId(req.params.id)})
-                    .then('deleted successfully')
-                    .catch((err) => console.log(err));
-            res.send(user);
+  
+    try {
+        const userToDelete = await User.findOne({ _id: new ObjectId(req.params.id) });
+        if (!userToDelete) {
+                res.status(404).send('User with the given ID is not found!');
+                return;
         }
-        catch(err) {
-            console.log('error', err);
+        // Ensure that the user making the request is authenticated
+        if (!req.user) {
+                res.status(401).send('Unauthorized');
+                return;
         }
+        // Check if the authenticated user is the admin or the user being deleted
+        const isEqual = req.user._id.equals(req.params.id); // compare 2 ObjectIds
+        if (req.user.role === 'Admin' || isEqual) {
+                await User.deleteOne({ _id: new ObjectId(req.params.id) });
+                res.status(200).send('Deleted successfully');
+        } else {
+                console.log(req.user)
+                res.status(403).send('Forbidden');
+        }
+    } catch (err) {
+        res.status(500).send(err);
     }
-}
+};
+  
 
 export { get_all_users, get_one_user, update_one_user, delete_one_user };
