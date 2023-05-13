@@ -13,9 +13,13 @@ const signup_user = async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        role: req.body.role,
+        role: "User",
     };
     try {
+        if (req.body.role && req.body.role !== "User") {
+            res.status(405).send("You can only signup for an account with role 'User'");
+            return;
+        }
         const userData = await User.create(user);
         res.status(201).json({
             success: true,
@@ -24,7 +28,7 @@ const signup_user = async (req, res) => {
     } catch (err) {
         res.status(500).json({
             success: false,
-            error: "Failed to create user",
+            error: err.message,
         });
     }
 };
