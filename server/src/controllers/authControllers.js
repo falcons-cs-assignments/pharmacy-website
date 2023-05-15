@@ -24,6 +24,7 @@ const signup_user = async (req, res) => {
         res.status(201).json({
             success: true,
             data: userData,
+            role: user.role
         });
     } catch (err) {
         res.status(500).json({
