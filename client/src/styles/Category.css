@@ -19,7 +19,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: calc(100vh - 132px);
+	min-height: calc(100vh - 112px);
 }
 
 #category .products-list {
