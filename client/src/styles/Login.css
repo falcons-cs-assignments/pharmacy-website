@@ -1,0 +1,99 @@
+/************** 
+    Body css
+ ***************/
+#login {
+  height: 100vh;
+  background: #2a3132;
+}
+#login .box {
+  width: 350px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #191919;
+  border: none;
+  border-radius: 25px;
+  text-align: center;
+}
+#login h1 {
+  color: white;
+  font-weight: 500;
+  letter-spacing: 5px;
+}
+/************** 
+ Input Fields
+***************/
+#login #email,
+#login #password {
+  border: 2px solid #0097e6;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  padding: 15px 45px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 25px;
+  text-align: center;
+  transition: 250ms width ease, 250ms border-color ease;
+}
+/************** 
+   On Hover
+***************/
+#login #email:hover,
+#login #password:hover {
+  width: 220px;
+}
+/************** 
+   On Focus
+***************/
+#login #email:focus,
+#login #password:focus {
+  width: 250px;
+  border-color: #6fb98f;
+}
+/************** 
+ Submit Button
+***************/
+#login #submit {
+  border: 2px solid #2ecc71;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  padding: 15px 40px;
+  outline: none;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 200;
+  transition: 250ms background ease;
+  -webkit-transition: 250ms background ease;
+  -moz-transition: 250ms background ease;
+  -o-transition: 250ms background ease;
+}
+/************** 
+   On Hover
+***************/
+#login #submit:hover {
+  background: #2ecc71;
+}
+
+#login p {
+  color: white;
+  text-decoration: none;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+#login p > a {
+  color: #0097e6;
+  text-decoration: none;
+  transition: 250ms color ease;
+  -webkit-transition: 250ms color ease;
+  -moz-transition: 250ms color ease;
+  -o-transition: 250ms color ease;
+}
