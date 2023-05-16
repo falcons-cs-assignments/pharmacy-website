@@ -17,13 +17,13 @@ function Navbar() {
 			<div className='container'>
 				<nav>
 					<div className='logo'>
-						<Link href='/'>
+						<Link to='/'>
 							<img src={logo} alt='logo' width='70' height='64' />
 						</Link>
 					</div>
 					<ul>
 						<li>
-							<Link href='/'>
+							<Link to='/'>
 								<i className='fas fa-heart'>Favorites</i>
 							</Link>
 						</li>

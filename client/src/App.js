@@ -13,11 +13,29 @@ function App() {
 			<Routes>
 				<Route element={<ProtectedRoutes />}>
 					<Route path='/' element={<Home />} />
-					<Route path='/category/:name' element={<Category />} />
+					<Route path='/category/:category_name' element={<Category />} />
 					<Route path='/product/:id' element={<Product />} />
 				</Route>
 				<Route path='/login' element={<Login />} />
 				<Route path='/signup' element={<Signup />} />
+				<Route
+					path='*'
+					element={
+						<h1
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								height: "100vh",
+								color: "red",
+								margin: "0",
+								fontSize: "10vw",
+							}}
+						>
+							404 Wrong path
+						</h1>
+					}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);

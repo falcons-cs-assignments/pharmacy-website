@@ -29,19 +29,23 @@ function Home() {
 			});
 	}, [navigate]);
 
+	const handleClick = (category) => {
+		navigate(`/category/${category}`);
+	};
+
 	return (
 		<div id='home'>
 			<Navbar />
 			<main>
 				<ul className='categories-list'>
-					{categories === [] ? (
+					{categories.length === 0 ? (
+						<li className='no-categories'>No categories</li>
+					) : (
 						categories.map((category) => (
-							<li className='category' key={category}>
-								{category}
+							<li className='category' onClick={() => handleClick(category)} key={category}>
+								<span>{category}</span>
 							</li>
 						))
-					) : (
-						<li className='category'>No categories</li>
 					)}
 				</ul>
 			</main>
@@ -57,7 +61,7 @@ function Home() {
 						<a href='/'>
 							<i className='fab fa-twitter'></i>
 						</a>
-						<a href='/'>
+						<a href='https://github.com/falcons-cs-assignments/pharmacy-website' rel='noreferrer' target='_blank'>
 							<i className='fab fa-github'></i>
 						</a>
 					</div>
