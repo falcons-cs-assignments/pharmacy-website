@@ -1,11 +1,13 @@
 import "../styles/Home.css";
 import Navbar from "../components/Navbar";
+import Loading from "../components/Loading";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
 	const [categories, setCategories] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -22,6 +24,7 @@ function Home() {
 
 				// Convert set to an array
 				setCategories(Array.from(uniqueCategories));
+				setLoading(false);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -32,6 +35,8 @@ function Home() {
 	const handleClick = (category) => {
 		navigate(`/category/${category}`);
 	};
+
+	if (loading) return <Loading />;
 
 	return (
 		<div id='home'>

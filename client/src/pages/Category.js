@@ -1,11 +1,13 @@
 import "../styles/Category.css";
 import Navbar from "../components/Navbar";
+import Loading from "../components/Loading";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 function Category() {
 	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const navigate = useNavigate();
 	const { category_name } = useParams();
 
@@ -17,6 +19,7 @@ function Category() {
 				const categoryProducts = products.filter((product) => product.category === category_name);
 
 				setProducts(categoryProducts);
+				setLoading(false);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -27,6 +30,8 @@ function Category() {
 	const handleClick = (productId) => {
 		navigate(`/product/${productId}`);
 	};
+
+	if (loading) return <Loading />;
 
 	return (
 		<div id='category'>

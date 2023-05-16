@@ -30,6 +30,7 @@ function App() {
 								color: "red",
 								margin: "0",
 								fontSize: "10vw",
+								userSelect: "none",
 							}}
 						>
 							404 Wrong path
