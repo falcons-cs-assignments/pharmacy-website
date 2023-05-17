@@ -2,7 +2,7 @@ import "../styles/Loading.css";
 
 function Loading() {
 	return (
-		<div>
+		<div id='loading'>
 			<div className='absCenter '>
 				<div className='loaderPill'>
 					<div className='loaderPill-anim'>

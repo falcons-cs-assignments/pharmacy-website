@@ -1,7 +1,6 @@
 import "./styles/App.css";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import LoginSignup from "./pages/LoginSignup";
 import Category from "./pages/Category";
 import Product from "./pages/Product";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
@@ -16,8 +15,7 @@ function App() {
 					<Route path='/category/:category_name' element={<Category />} />
 					<Route path='/product/:id' element={<Product />} />
 				</Route>
-				<Route path='/login' element={<Login />} />
-				<Route path='/signup' element={<Signup />} />
+				<Route path='/login-signup' element={<LoginSignup />} />
 				<Route
 					path='*'
 					element={

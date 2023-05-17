@@ -23,7 +23,7 @@ function Category() {
 			})
 			.catch((err) => {
 				console.log(err);
-				navigate("/login");
+				navigate("/login-signup");
 			});
 	}, [navigate, category_name]);
 

@@ -8,7 +8,7 @@ function Navbar() {
 
 	const handleLogout = () => {
 		axios.post("/api/users/logout").then(() => {
-			navigate("/login");
+			navigate("/login-signup");
 		});
 	};
 

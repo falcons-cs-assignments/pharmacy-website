@@ -28,7 +28,7 @@ function Home() {
 			})
 			.catch((err) => {
 				console.log(err);
-				navigate("/login");
+				navigate("/login-signup");
 			});
 	}, [navigate]);
 

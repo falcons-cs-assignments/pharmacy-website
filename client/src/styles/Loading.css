@@ -5,8 +5,15 @@
 	--EASE_IN_QUAD: cubic-bezier(0.55, 0.085, 0.68, 0.53);
 	--EASE_OUT_QUAD: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-	--COLOR_UI_PHARMACY: #237db5;
+	--COLOR_UI_PHARMACY: #fff;
 	--loaderPill_DURATION: 1800ms;
+}
+
+#loading {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 }
 
 .absCenter {
@@ -40,7 +47,7 @@
 	height: 30px;
 	border-radius: 15px;
 	border: 1px solid var(--COLOR_UI_PHARMACY);
-	background-image: linear-gradient(to right, var(--COLOR_UI_PHARMACY) 50%, #ffffff 50%);
+	background-image: linear-gradient(to right, var(--COLOR_UI_PHARMACY) 50%, #573b8a 50%);
 }
 
 .loaderPill-floor {
