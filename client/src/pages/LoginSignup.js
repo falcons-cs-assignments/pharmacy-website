@@ -54,15 +54,15 @@ function LoginSignup() {
 
 	return (
 		<div id='login-signup'>
-			<div class='main'>
-				<p class='message' style={{ display: message ? "inline" : "none" }}>
+			<div className='main'>
+				<p className='message' style={{ display: message ? "inline" : "none" }}>
 					{message}
 				</p>
 				<input type='checkbox' id='chk' aria-hidden='true' />
 
-				<div class='signup'>
+				<div className='signup'>
 					<form onSubmit={handleSignup}>
-						<label for='chk' aria-hidden='true'>
+						<label htmlFor='chk' aria-hidden='true'>
 							Sign up
 						</label>
 						<input type='text' name='name' placeholder='Full Name' autoComplete='off' required />
@@ -72,9 +72,9 @@ function LoginSignup() {
 					</form>
 				</div>
 
-				<div class='login'>
+				<div className='login'>
 					<form onSubmit={handleLogin}>
-						<label for='chk' aria-hidden='true'>
+						<label htmlFor='chk' aria-hidden='true'>
 							Login
 						</label>
 						<input type='email' name='email' placeholder='Email' autoComplete='off' required />

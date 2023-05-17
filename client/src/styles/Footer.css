@@ -1,0 +1,31 @@
+#footer .container {
+	width: 70%;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+footer {
+	background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+	color: #fff;
+	padding: 10px;
+}
+
+#footer .left p {
+	margin: 0;
+}
+
+#footer .right a {
+	color: #fff;
+	font-size: 24px;
+	margin-left: 10px;
+}
+
+#footer .right a:first-child {
+	margin-left: 0;
+}
+
+#footer .right a:hover {
+	text-decoration: none;
+}
