@@ -1,7 +1,6 @@
 import "./styles/App.css";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import LoginSignup from "./pages/LoginSignup";
 import Category from "./pages/Category";
 import Product from "./pages/Product";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
@@ -13,11 +12,29 @@ function App() {
 			<Routes>
 				<Route element={<ProtectedRoutes />}>
 					<Route path='/' element={<Home />} />
-					<Route path='/category/:name' element={<Category />} />
+					<Route path='/category/:category_name' element={<Category />} />
 					<Route path='/product/:id' element={<Product />} />
 				</Route>
-				<Route path='/login' element={<Login />} />
-				<Route path='/signup' element={<Signup />} />
+				<Route path='/login-signup' element={<LoginSignup />} />
+				<Route
+					path='*'
+					element={
+						<h1
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								height: "100vh",
+								color: "red",
+								margin: "0",
+								fontSize: "10vw",
+								userSelect: "none",
+							}}
+						>
+							404 Wrong path
+						</h1>
+					}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);
