@@ -44,7 +44,7 @@ function Category() {
 					) : (
 						products.map((product) => (
 							<li className='product' onClick={() => handleClick(product._id)} key={product._id}>
-								<img src={process.env.PUBLIC_URL + "/images/panadol.avif"} alt={product.name} />
+								<img src={process.env.PUBLIC_URL + "/images/panadol.png"} alt={product.name} />
 								<p>{product.name}</p>
 								<p>{product.price}$</p>
 							</li>
