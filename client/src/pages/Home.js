@@ -1,5 +1,6 @@
 import "../styles/Home.css";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import Loading from "../components/Loading";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -42,36 +43,23 @@ function Home() {
 		<div id='home'>
 			<Navbar />
 			<main>
-				<ul className='categories-list'>
+				<div className='categories-box'>
 					{categories.length === 0 ? (
-						<li className='no-categories'>No categories</li>
+						<div className='no-categories'>No categories</div>
 					) : (
 						categories.map((category) => (
-							<li className='category' onClick={() => handleClick(category)} key={category}>
-								<span>{category}</span>
-							</li>
+							<div className='category'>
+								<span className='category-link' onClick={() => handleClick(category)} key={category}>
+									<div className='category-bg'></div>
+
+									<div className='category-name'>{category}</div>
+								</span>
+							</div>
 						))
 					)}
-				</ul>
-			</main>
-			<footer>
-				<div className='container'>
-					<div className='left'>
-						<p>&copy; 2023 copy right reserved</p>
-					</div>
-					<div className='right'>
-						<a href='/'>
-							<i className='fab fa-facebook'></i>
-						</a>
-						<a href='/'>
-							<i className='fab fa-twitter'></i>
-						</a>
-						<a href='https://github.com/falcons-cs-assignments/pharmacy-website' rel='noreferrer' target='_blank'>
-							<i className='fab fa-github'></i>
-						</a>
-					</div>
 				</div>
-			</footer>
+			</main>
+			<Footer />
 		</div>
 	);
 }

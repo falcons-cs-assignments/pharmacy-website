@@ -2,7 +2,7 @@
 	position: fixed;
 	width: 100%;
 	max-height: 64px;
-	background-color: #333;
+	background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 	color: #fff;
 	padding: 10px;
 	z-index: 5;

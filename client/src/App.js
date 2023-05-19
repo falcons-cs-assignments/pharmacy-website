@@ -12,8 +12,8 @@ function App() {
 			<Routes>
 				<Route element={<ProtectedRoutes />}>
 					<Route path='/' element={<Home />} />
-					<Route path='/category/:category_name' element={<Category />} />
-					<Route path='/product/:id' element={<Product />} />
+					<Route path='/category/:categoryName' element={<Category />} />
+					<Route path='/product/:productId' element={<Product />} />
 				</Route>
 				<Route path='/login-signup' element={<LoginSignup />} />
 				<Route

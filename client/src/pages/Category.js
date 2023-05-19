@@ -1,5 +1,6 @@
 import "../styles/Category.css";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import Loading from "../components/Loading";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -9,23 +10,23 @@ function Category() {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const navigate = useNavigate();
-	const { category_name } = useParams();
+	const { categoryName } = useParams();
 
 	useEffect(() => {
 		axios
 			.get("/api/products")
 			.then((res) => {
 				const products = res.data;
-				const categoryProducts = products.filter((product) => product.category === category_name);
+				const categoryProducts = products.filter((product) => product.category === categoryName);
 
 				setProducts(categoryProducts);
 				setLoading(false);
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log(err.data);
 				navigate("/login-signup");
 			});
-	}, [navigate, category_name]);
+	}, [navigate, categoryName]);
 
 	const handleClick = (productId) => {
 		navigate(`/product/${productId}`);
@@ -43,7 +44,7 @@ function Category() {
 					) : (
 						products.map((product) => (
 							<li className='product' onClick={() => handleClick(product._id)} key={product._id}>
-								<img src={product.image} alt={product.name} />
+								<img src={process.env.PUBLIC_URL + "/images/panadol.png"} alt={product.name} />
 								<p>{product.name}</p>
 								<p>{product.price}$</p>
 							</li>
@@ -51,24 +52,7 @@ function Category() {
 					)}
 				</ul>
 			</main>
-			<footer>
-				<div className='container'>
-					<div className='left'>
-						<p>&copy; 2023 copy right reserved</p>
-					</div>
-					<div className='right'>
-						<a href='/'>
-							<i className='fab fa-facebook'></i>
-						</a>
-						<a href='/'>
-							<i className='fab fa-twitter'></i>
-						</a>
-						<a href='https://github.com/falcons-cs-assignments/pharmacy-website' rel='noreferrer' target='_blank'>
-							<i className='fab fa-github'></i>
-						</a>
-					</div>
-				</div>
-			</footer>
+			<Footer />
 		</div>
 	);
 }
