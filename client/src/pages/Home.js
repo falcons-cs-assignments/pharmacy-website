@@ -48,8 +48,8 @@ function Home() {
 						<div className='no-categories'>No categories</div>
 					) : (
 						categories.map((category) => (
-							<div className='category'>
-								<span className='category-link' onClick={() => handleClick(category)} key={category}>
+							<div className='category' key={category}>
+								<span className='category-link' onClick={() => handleClick(category)}>
 									<div className='category-bg'></div>
 
 									<div className='category-name'>{category}</div>

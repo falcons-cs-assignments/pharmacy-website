@@ -3,3 +3,20 @@
 	margin: 0;
 	padding: 0;
 }
+
+::-webkit-scrollbar {
+	width: 8px;
+	background-color: #2c0c77;
+}
+
+::-webkit-scrollbar-track {
+	border: solid #8c7bec54 1px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #5c2ad1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #6c49bd;
+}
