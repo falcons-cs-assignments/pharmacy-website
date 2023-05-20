@@ -1,6 +1,7 @@
 import "./styles/App.css";
 import Home from "./pages/Home";
 import LoginSignup from "./pages/LoginSignup";
+import Favorites from "./pages/Favorites";
 import Category from "./pages/Category";
 import Product from "./pages/Product";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
@@ -12,6 +13,7 @@ function App() {
 			<Routes>
 				<Route element={<ProtectedRoutes />}>
 					<Route path='/' element={<Home />} />
+					<Route path='/favorites' element={<Favorites />} />
 					<Route path='/category/:categoryName' element={<Category />} />
 					<Route path='/product/:productId' element={<Product />} />
 				</Route>

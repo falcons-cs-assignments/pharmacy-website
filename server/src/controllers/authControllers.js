@@ -46,6 +46,7 @@ const login_user = async (req, res) => {
 				res.status(200).json({
 					success: true,
 					token: token,
+					userId: user._id,
 					expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRES,
 				});
 			} else {

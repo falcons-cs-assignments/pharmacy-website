@@ -5,6 +5,7 @@
 /* Product Container */
 #product .product-container {
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
@@ -14,7 +15,7 @@
 
 /* Image Container */
 #product .image-container {
-	width: 50%;
+	flex-basis: 45%;
 	margin-right: 20px;
 }
 
@@ -77,4 +78,11 @@
 #product .add-to-favorites-btn:hover {
 	background-color: #007bff;
 	color: #fff;
+}
+
+#product .added-to-favorites {
+	flex-basis: 100%;
+	margin-top: 20px;
+	text-align: center;
+	color: #0cdfa0;
 }

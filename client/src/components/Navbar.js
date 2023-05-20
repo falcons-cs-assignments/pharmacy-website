@@ -7,6 +7,7 @@ function Navbar() {
 	const navigate = useNavigate();
 
 	const handleLogout = () => {
+		localStorage.removeItem("userId");
 		axios.post("/api/users/logout").then(() => {
 			navigate("/login-signup");
 		});
@@ -23,7 +24,7 @@ function Navbar() {
 					</div>
 					<ul>
 						<li>
-							<Link to='/'>
+							<Link to='/favorites'>
 								<i className='fas fa-heart'>Favorites</i>
 							</Link>
 						</li>
