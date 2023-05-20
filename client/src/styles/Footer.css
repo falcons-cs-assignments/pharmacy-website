@@ -6,6 +6,13 @@
 	align-items: center;
 }
 
+@media only screen and (max-width: 767px) {
+	#footer .container {
+		width: 100%;
+		font-size: 20px;
+	}
+}
+
 footer {
 	background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 	color: #fff;
