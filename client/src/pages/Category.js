@@ -72,9 +72,7 @@ function Category() {
 									>
 										remove
 									</button>
-								) : (
-									""
-								)}
+								) : null}
 							</li>
 						))
 					)}

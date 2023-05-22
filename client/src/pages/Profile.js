@@ -55,7 +55,10 @@ function Profile() {
 				navigate("/login-signup");
 			})
 			.catch((err) => {
-				console.log(err.response.data);
+				setMessage(err.response.data);
+				setTimeout(() => {
+					setMessage("");
+				}, 1500);
 			});
 	};
 
