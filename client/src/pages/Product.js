@@ -35,7 +35,9 @@ function Product() {
 			})
 			.then((res) => {
 				console.log(res.data);
-				setMessage("");
+				setTimeout(() => {
+					setMessage("");
+				}, 1200);
 			})
 			.catch((err) => {
 				console.log(err.response.data);

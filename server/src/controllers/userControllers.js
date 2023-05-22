@@ -1,4 +1,5 @@
 import { User } from "../models/User.js";
+import bcrypt from "bcrypt";
 import { ObjectId } from "mongodb";
 
 const get_all_users = async (req, res) => {
@@ -28,10 +29,29 @@ const update_one_user = async (req, res) => {
 	if (!user) {
 		res.status(404).send("user with given ID is not found!");
 	} else {
+		if (req.body.newPassword) {
+			const auth = await bcrypt.compare(req.body.oldPassword, user.password);
+			if (!auth) {
+				res.status(401).json({
+					success: false,
+					error: "Password is incorrect",
+				});
+				return;
+			} else {
+				if (req.body.newPassword.length < 8) {
+					res.status(405).send("Password must be at least 8 characters long");
+					return;
+				}
+				const salt = await bcrypt.genSalt();
+				req.body.newPassword = await bcrypt.hash(req.body.newPassword, salt);
+			}
+		} else {
+			req.body.newPassword = undefined;
+		}
 		const newUser = {
 			name: req.body.name,
 			email: req.body.email,
-			password: req.body.password,
+			password: req.body.newPassword,
 			role: req.body.role,
 		};
 		if (req.body.favOperation === "add") {
