@@ -47,6 +47,7 @@ const login_user = async (req, res) => {
 					success: true,
 					token: token,
 					userId: user._id,
+					role: user.role,
 					expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRES,
 				});
 			} else {

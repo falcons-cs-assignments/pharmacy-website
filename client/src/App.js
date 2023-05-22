@@ -1,5 +1,7 @@
 import "./styles/App.css";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Admin from "./pages/Admin";
 import LoginSignup from "./pages/LoginSignup";
 import Favorites from "./pages/Favorites";
 import Category from "./pages/Category";
@@ -13,6 +15,8 @@ function App() {
 			<Routes>
 				<Route element={<ProtectedRoutes />}>
 					<Route path='/' element={<Home />} />
+					<Route path='/profile' element={<Profile />} />
+					<Route path='/admin' element={<Admin />} />
 					<Route path='/favorites' element={<Favorites />} />
 					<Route path='/category/:categoryName' element={<Category />} />
 					<Route path='/product/:productId' element={<Product />} />

@@ -28,6 +28,14 @@ function Navbar() {
 								<i className='fas fa-heart'>Favorites</i>
 							</Link>
 						</li>
+						{localStorage.getItem("role") === "Admin" ? (
+							<li>
+								<Link to='/admin'>Admin</Link>
+							</li>
+						) : null}
+						<li>
+							<Link to='/Profile'>Profile</Link>
+						</li>
 						<li>
 							<Link onClick={handleLogout}>Logout</Link>
 						</li>

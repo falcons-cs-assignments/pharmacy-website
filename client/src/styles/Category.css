@@ -53,11 +53,21 @@
 
 #category .product p {
 	color: white;
-	font-size: 5vw;
+	font-size: 3.5vw;
 	margin: 0;
 }
 
 #category li > img {
 	width: 20vw;
 	height: 17vw;
+}
+
+#category .remove-product {
+	background-color: #2fd18d;
+	padding: calc(1vw - 4px);
+	cursor: pointer;
+}
+
+#category .remove-product:hover {
+	background-color: #51e7a9;
 }

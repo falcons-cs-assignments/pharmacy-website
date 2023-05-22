@@ -32,6 +32,21 @@ function Category() {
 		navigate(`/product/${productId}`);
 	};
 
+	const removeProduct = (productId) => {
+		setLoading(true);
+		axios
+			.delete("/api/products/" + productId)
+			.then((res) => {
+				console.log(res.data);
+				setProducts(products.filter((product) => product._id !== productId));
+				setLoading(false);
+			})
+			.catch((err) => {
+				console.log(err.response.data);
+				setLoading(false);
+			});
+	};
+
 	if (loading) return <Loading />;
 
 	return (
@@ -47,6 +62,17 @@ function Category() {
 								<img src={process.env.PUBLIC_URL + "/images/panadol.png"} alt={product.name} />
 								<p>{product.name}</p>
 								<p>{product.price}$</p>
+								{localStorage.getItem("role") === "Admin" ? (
+									<button
+										className='remove-product'
+										onClick={(e) => {
+											e.stopPropagation();
+											removeProduct(product._id);
+										}}
+									>
+										remove
+									</button>
+								) : null}
 							</li>
 						))
 					)}

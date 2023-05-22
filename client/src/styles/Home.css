@@ -8,13 +8,21 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-align: start;
-	-ms-flex-align: start;
-	align-items: flex-start;
+	justify-content: center;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 
-	padding: 50px 0;
+	padding: 204px 0;
+}
+
+#home .no-categories {
+	text-align: center;
+	font-size: 4vw;
+	-webkit-user-select: none;
+	user-select: none;
+	padding: 6vw;
+	margin-left: 25%;
+	background-color: #e3e3e3;
 }
 
 #home .category {

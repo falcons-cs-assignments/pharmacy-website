@@ -1,0 +1,36 @@
+#profile main {
+	width: 69%;
+	min-height: calc(100vh - 112px);
+	margin: 0 auto;
+}
+
+#profile main > h1 {
+	padding-top: 70px;
+}
+
+#profile input[type="text"],
+#profile input[type="password"],
+#profile input[type="email"] {
+	width: 60%;
+	height: 20px;
+	background: #e0dede;
+	display: block;
+	margin: 10px;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+
+#profile input[type="submit"] {
+	margin-top: 20px;
+	padding: 7px;
+	cursor: pointer;
+	background-color: lime;
+}
+
+#profile button {
+	margin: 80px;
+	padding: 10px;
+	background-color: red;
+}
