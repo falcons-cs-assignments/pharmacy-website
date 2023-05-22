@@ -62,8 +62,12 @@
 	height: 17vw;
 }
 
-@media screen and (max-width: 1024px) {
-	#category .product p {
-		font-size: 3.5vw;
-	}
+#category .remove-product {
+	background-color: #2fd18d;
+	padding: calc(1vw - 4px);
+	cursor: pointer;
+}
+
+#category .remove-product:hover {
+	background-color: #51e7a9;
 }

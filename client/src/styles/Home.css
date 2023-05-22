@@ -17,6 +17,16 @@
 	padding: 204px 0;
 }
 
+#home .no-categories {
+	text-align: center;
+	font-size: 4vw;
+	-webkit-user-select: none;
+	user-select: none;
+	padding: 6vw;
+	margin-left: 25%;
+	background-color: #e3e3e3;
+}
+
 #home .category {
 	-ms-flex-preferred-size: calc(33% - 30px);
 	flex-basis: calc(33% - 30px);
