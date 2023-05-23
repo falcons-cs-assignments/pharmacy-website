@@ -70,6 +70,11 @@ const update_one_user = async (req, res) => {
 					return;
 				}
 			}
+			// prevent user from changing his own role
+			if (req.body.role && user.role !== "Admin") {
+				res.status(403).send("you should contact your admin in order to change your user role!");
+				return;
+			}
 			const updateUser = await User.findByIdAndUpdate(req.params.id, newUser);
 			res.status(200).send("updated successfully");
 		} catch (err) {
