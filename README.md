@@ -1,4 +1,8 @@
 # pharmacy-website
+
+#### node version: ```v18.6.0```
+#### npm version: ```9.5.1```
+
 ___
 
 ## Prepare environment:
