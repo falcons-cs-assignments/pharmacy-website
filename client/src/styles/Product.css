@@ -1,88 +1,89 @@
 #product main {
-	min-height: calc(100vh - 112px);
+  min-height: calc(100vh - 112px);
 }
 
 /* Product Container */
 #product .product-container {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	margin: 50px auto;
-	width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  width: 80%;
 }
 
 /* Image Container */
 #product .image-container {
-	flex-basis: 45%;
-	margin-right: 20px;
+  flex-basis: 45%;
+  margin-right: 20px;
 }
 
 #product .image-container img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 /* Details Container */
 #product .details-container {
-	width: 50%;
+  width: 50%;
 }
 
 #product .product-name {
-	font-size: 2em;
-	margin-top: 0;
+  font-size: 2em;
+  margin-top: 0;
 }
 
 #product .product-price {
-	font-size: 1.5em;
-	margin: 10px 0;
+  font-size: 1.5em;
+  margin: 10px 0;
 }
 
 #product .product-description {
-	font-size: 1em;
-	line-height: 1.5;
-	margin-bottom: 20px;
+  font-size: 1em;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
 #product .product-category {
-	font-size: 1em;
-	margin-bottom: 20px;
+  font-size: 1em;
+  margin-bottom: 20px;
 }
 
 #product .button-container {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 #product .add-to-cart-btn {
-	background-color: #007bff;
-	color: #fff;
-	border: none;
-	border-radius: 4px;
-	padding: 10px 20px;
-	margin-right: 10px;
-	cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 #product .add-to-favorites-btn {
-	background-color: transparent;
-	color: #007bff;
-	border: none;
-	border-radius: 4px;
-	padding: 10px 20px;
-	cursor: pointer;
-	border: 1px solid #007bff;
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid #007bff;
 }
 #product .add-to-favorites-btn:hover {
-	background-color: #007bff;
-	color: #fff;
+  background-color: #007bff;
+  color: #fff;
 }
 
 #product .added-to-favorites {
-	flex-basis: 100%;
-	margin-top: 20px;
-	text-align: center;
-	color: #0cdfa0;
+  flex-basis: 100%;
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+  color: #2c0c77;
 }
